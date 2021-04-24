@@ -3,6 +3,7 @@ version: '3.7'
 services:
   crud.usuarios:
     image: ${DOCKER_REGISTRY-}crud
+    container_name: crud-app
     build:
       context: .
       dockerfile: Crud/Dockerfile
@@ -15,11 +16,9 @@ services:
       - globalnet
 
   dockersqlserver:
-    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    image: spakov/mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    container_name: sql-server-linux
     restart: always
-    environment:
-      - ACCEPT_EULA=Y
-      - SA_PASSWORD=MinhaSenh@12
     ports:
       - "1435:1433"
     networks:

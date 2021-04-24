@@ -1,3 +1,9 @@
+USE master
+GO
+DROP DATABASE IF EXISTS AulaCrud
+GO
+
+/*
 IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'AulaCrud')
 BEGIN	
 	CREATE DATABASE [AulaCrud];		
@@ -7,6 +13,11 @@ BEGIN
 	raiserror('BANCO DE DADOS AulaCrud JA EXISTE!', 20, -1) with log
 END
 GO
+*/
+
+CREATE DATABASE [AulaCrud];
+GO
+
 USE [AulaCrud]
 GO
 
@@ -240,3 +251,14 @@ EXEC InsertUser 'Usuario teste', '370.393.678-90', 1
 PRINT ' '
 PRINT 'BANCO DE DADOS AulaCrud CRIADO COM SUCESSO!!'
 PRINT ' '
+
+USE master
+GO
+CREATE LOGIN [crud_app_user] WITH PASSWORD=N'MinhaSenh@12', CHECK_EXPIRATION=OFF, CHECK_POLICY=ON;
+GO
+USE [AulaCrud];
+GO
+CREATE USER [crud_app_user] FOR LOGIN [crud_app_user];
+GO 
+EXEC sp_addrolemember N'db_owner', [crud_app_user];
+GO
