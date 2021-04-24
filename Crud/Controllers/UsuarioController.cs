@@ -30,7 +30,7 @@ namespace Crud.Controllers
 
                 return Ok(users);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return BadRequest("Erro, tente novamente mais tarde");
             }
