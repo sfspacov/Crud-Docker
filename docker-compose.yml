@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   crud.usuarios:
-    image: ${DOCKER_REGISTRY}/crud:dev
+    image: spakov/crud:dev
     container_name: crud-app
     build:
       context: .
@@ -16,7 +16,7 @@ services:
       - globalnet
 
   dockersqlserver:
-    image: ${DOCKER_REGISTRY}/banco_crud:dev
+    image: spakov/banco_crud:dev
     container_name: sql-server-linux
     restart: always
     ports:
