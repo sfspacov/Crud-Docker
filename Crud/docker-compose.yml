@@ -6,7 +6,7 @@ services:
     container_name: crud-app
     build:
       context: .
-      dockerfile: Crud/Dockerfile
+      dockerfile: Dockerfile
     environment:
       - ASPNETCORE_URLS=http://*:5000
       - ASPNETCORE_ENVIRONMENT=Docker
